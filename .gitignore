@@ -103,5 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# Te production build
+# The production build
 build/
