@@ -9,6 +9,9 @@ export interface IImage {
 
 export interface ImageModel extends Model<IImage> {
 	thumbnail(): string;
+	propreties: {
+		popUpMarkup(): string;
+	};
 }
 
 export interface ICampground {
