@@ -18,7 +18,9 @@ import userRoutes from "./routes/users";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import MongoStore from "connect-mongo";
-
+import { readFileSync } from "fs";
+import https from 'https';
+import http from 'http';
 const app: Application = express();
 
 //Legacy code for connecting locally
@@ -149,6 +151,15 @@ app.use((err: ExpressError, req: Request, res: Response, next: NextFunction) => 
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-	console.log(`Serving on port ${port}`);
-});
+const sslOptions = {
+	key: readFileSync('key.pem'),
+	cert: readFileSync('cert.pem'),
+	passphrase: process.env.SSL_PASS
+  };
+
+http.createServer(app).listen(8080);
+https.createServer(sslOptions, app).listen(3000);
+
+// app.listen(port, () => {
+// 	console.log(`Serving on port ${port}`);
+// });
