@@ -157,8 +157,8 @@ const sslOptions = {
 	passphrase: process.env.SSL_PASS,
 };
 
-http.createServer(app).listen(8080);
-https.createServer(sslOptions, app).listen(3000);
+// http.createServer(app).listen(8080);
+https.createServer(sslOptions, app).listen(port);
 
 // app.listen(port, () => {
 // 	console.log(`Serving on port ${port}`);
