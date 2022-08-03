@@ -158,8 +158,8 @@ const sslOptions = {
 };
 
 // http.createServer(app).listen(8080);
-https.createServer(sslOptions, app).listen(port);
+// https.createServer(sslOptions, app).listen(port);
 
-// app.listen(port, () => {
-// 	console.log(`Serving on port ${port}`);
-// });
+app.listen(port, () => {
+	console.log(`Serving on port ${port}`);
+});
